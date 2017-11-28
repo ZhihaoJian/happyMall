@@ -1,3 +1,7 @@
-require('../module.js');
-console.log('hello index');
-require('./index.css');
+require('page/common/header/index.js');
+require('page/common/nav/index.js');
+var nav_side = require('page/nav-side/index.js');
+
+nav_side.init({
+    name: 'user-center'
+});
