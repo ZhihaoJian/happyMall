@@ -82,7 +82,7 @@ var page = {
                 _user.resetpPassword({
                     username: _this.data.username,
                     passwordNew: password,
-                    forgetToekn: _this.data.token
+                    forgetToken: _this.data.token
                 }, function (res) {
                     window.location.href = './result.html?type=pass-reset';
                 }, function (errMsg) {
