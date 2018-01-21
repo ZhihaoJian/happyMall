@@ -16,6 +16,7 @@ const WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
  */
 const getHtmlConfig = function (name, title) {
     return {
+        favicon: './favicon.ico',
         template: './src/view/' + name + '.html',
         filename: 'view/' + name + '.html',
         inject: true,
@@ -47,8 +48,9 @@ const config = {
 
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/dist',
+        path: __dirname + '/dist/',
+        // publicPath: '/dist/',
+        publicPath: 'dev' === WEBPACK_ENV ? '/dist/' : '//s.happymmall.com/mmall-fe/dist/',
         filename: 'js/[name].bundle.js'
     },
     externals: {
@@ -57,7 +59,14 @@ const config = {
     module: {
         loaders: [
             { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader', 'postcss-loader') },
-            { test: /\.string$/, loader: 'html-loader' },
+            {
+                test: /\.string$/,
+                loader: 'html-loader',
+                query: {
+                    minimize: true,
+                    removeAttributeQuotes: false
+                }
+            },
             { test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },
         ]
     },
