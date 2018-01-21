@@ -4,8 +4,8 @@
   "description": "\"# happyMall\"",
   "main": "index.js",
   "scripts": {
-    "dev": "WEBPACK_DEV=dev webpack-dev-server --inline --prot 8080",
-    "dev_win": "set WEBPACK_DEV=dev && webpack-dev-server --inline --prot 8080",
+    "dev": "WEBPACK_DEV=dev webpack-dev-server --inline --port 8080",
+    "dev_win": "set WEBPACK_DEV=dev && webpack-dev-server --inline --port 8080",
     "dist": "WEBPACK_DEV=online webpack -p",
     "dist_win": "set WEBPACK_DEV=online && webpack -p"
   },
