@@ -5,6 +5,15 @@ var _mm = require('util/mm.js');
 $(function () {
     var type = _mm.getUrlParam('type') || 'default',
         //显示对应的提示元素
-        $element = $('.' + type + '-success').show();
+        $element = $('.' + type + '-success');
+
+    if (type === 'payment') {
+        var $orderNumber = $element.find('.order-number'),
+            orderNumber = _mm.getUrlParam('orderNumber');
+            
+        $orderNumber.attr('href', $orderNumber.attr('href') + orderNumber)
+    }
+
+    $element.show();
 
 })

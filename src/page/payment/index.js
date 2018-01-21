@@ -33,9 +33,20 @@ var page = {
         _payment.getPaymentInfo(this.data.orderNumber, function (res) {
             html = _mm.renderHtml(templateIndex, res);
             $pageWrap.html(html);
+            _this.listenOrderStatus();
         }, function (errMsg) {
             $pageWrap.html('<p class="err-tip">' + errMsg + '</p>');
         });
+    },
+    //监听订单状态    
+    listenOrderStatus: function () {
+        this.paymentTimer = window.setInterval(() => {
+            _payment.getPaymentStatus(this.data.orderNumber, function (res) {
+                if (res == true) {
+                    window.location.href = './result.html?type=payment&paymentNumber=' + this.data.orderNumber;
+                }
+            });
+        }, 5000)
     }
 
 };
